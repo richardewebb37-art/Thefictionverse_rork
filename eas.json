@@ -27,6 +27,9 @@
       "android": {
         "buildType": "apk",
         "withoutCredentials": true
+      },
+      "env": {
+        "EAS_BUILD_NO_CACHING": "1"
       }
     }
   },
