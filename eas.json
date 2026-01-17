@@ -8,6 +8,9 @@
       "developmentClient": true,
       "distribution": "internal",
       "channel": "development",
+      "env": {
+        "EAS_BUILD": "1"
+      },
       "android": {
         "buildType": "apk",
         "withoutCredentials": true
@@ -16,6 +19,9 @@
     "preview": {
       "distribution": "internal",
       "channel": "preview",
+      "env": {
+        "EAS_BUILD": "1"
+      },
       "android": {
         "buildType": "apk",
         "withoutCredentials": true
@@ -23,6 +29,9 @@
     },
     "production": {
       "channel": "production",
+      "env": {
+        "EAS_BUILD": "1"
+      },
       "android": {
         "buildType": "apk"
       }
