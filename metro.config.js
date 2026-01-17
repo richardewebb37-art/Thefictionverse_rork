@@ -1,21 +1,28 @@
 const { getDefaultConfig } = require("expo/metro-config");
 
-// Check if we're in EAS build environment or should use standard Expo
-const isEasBuild = process.env.EAS_BUILD === '1' || process.env.USE_STANDARD_EXPO === '1';
-
 const config = getDefaultConfig(__dirname);
 
-// Only use Rork Metro wrapper for local development, not for EAS builds
-if (!isEasBuild) {
+// Check for EAS build environment using multiple indicators
+const isEasBuild = 
+  process.env.EAS_BUILD === '1' ||
+  process.env.EAS_BUILD_MODE === 'production' || 
+  process.env.EAS_BUILD_MODE === 'preview' ||
+  process.env.EAS_BUILD_MODE === 'development' ||
+  process.env.CI === 'true' ||
+  process.env.EXPO_CI === '1';
+
+if (isEasBuild) {
+  console.log("🏗️ EAS Build detected - using standard Expo Metro config");
+  module.exports = config;
+} else {
+  // For local development, try to use Rork Metro wrapper
   try {
     const { withRorkMetro } = require("@rork-ai/toolkit-sdk/metro");
-    console.log("🔧 Using Rork Metro wrapper for development");
+    console.log("🔧 Local development - using Rork Metro wrapper");
     module.exports = withRorkMetro(config);
   } catch (error) {
-    console.log("⚠️ Rork SDK not available, using standard Metro config");
+    console.log("⚠️ Rork SDK not available, falling back to standard Metro config");
+    console.log("Error:", error.message);
     module.exports = config;
   }
-} else {
-  console.log("🏗️ Using standard Expo Metro config for EAS build");
-  module.exports = config;
 }
