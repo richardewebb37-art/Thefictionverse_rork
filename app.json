@@ -95,7 +95,11 @@
           "color": "#00d4ff"
         }
       ],
-      "expo-secure-store"
+      "expo-secure-store",
+      "@react-native-firebase/app",
+      "@react-native-firebase/auth",
+      "@react-native-firebase/firestore",
+      "@react-native-firebase/storage"
     ],
     "experiments": {
       "typedRoutes": true
