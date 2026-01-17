@@ -96,7 +96,14 @@
         }
       ],
       "expo-secure-store",
-      "@react-native-firebase/app",
+      [
+        "@react-native-firebase/app",
+        {
+          "android": {
+            "messagingDefaultNotificationColor": "@color/notification_icon_color"
+          }
+        }
+      ],
       "@react-native-firebase/auth",
       [
         "expo-build-properties",
