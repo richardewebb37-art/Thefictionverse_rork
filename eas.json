@@ -26,7 +26,8 @@
       "channel": "production",
       "android": {
         "buildType": "apk",
-        "withoutCredentials": true
+        "withoutCredentials": true,
+        "prebuild": true
       }
     }
   },
