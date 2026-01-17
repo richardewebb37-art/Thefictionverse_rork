@@ -125,9 +125,7 @@
       "fallbackToCacheTimeout": 0,
       "url": "https://u.expo.dev/be49a9a0-ce36-4e04-901a-9cfabd7f76b9"
     },
-    "runtimeVersion": {
-      "policy": "sdkVersion"
-    },
+    "runtimeVersion": "1.0.0",
     "owner": "ericwebb341"
   }
 }
